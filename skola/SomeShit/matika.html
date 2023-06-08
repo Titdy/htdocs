@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="shitty.js"></script>
+</head>
+
+
+<body>
+    <button onclick="add()">+1</button>
+
+    <button onclick="minus()">-1</button>
+
+    <button onclick="addTen()">+10</button>
+
+    <button onclick="minusTen()">-10</button>
+
+    <button onclick="vypis()">Výpis</button>
+
+    <button onclick="timesTen()">Násobit 10</button>
+
+    <button onclick="split()">.|..</button>
+
+    <h1>Zde tisknu z JavaScriptu do HTML</h1>
+    <p id="demo"></p>
+    <script>
+        document.getElementById("demo").innerHTML = testExample(1,100);
+    </script>
+
+<button onclick="cisla(5)">random cislo</button>
+
+
+    <script>
+var cislo = 0;
+
+        function add(){
+            cislo++;
+            console.log(cislo);
+        }
+        function minus(){
+            cislo--;
+            console.log(cislo);
+        }
+        function addTen(){
+            cislo = cislo +10;
+            console.log(cislo);
+        }
+        function minusTen(){
+            cislo = cislo -10;
+            console.log(cislo);   
+        }
+        function timesTen(){
+            cislo = cislo*10;
+            console.log(cislo);
+        }
+        function split(){
+            cislo = cislo/2;
+            console.log(cislo);
+        }
+        function vypis(){
+            console.log(cislo);
+        }
+
+    </script>
+
+</body>
+</html>

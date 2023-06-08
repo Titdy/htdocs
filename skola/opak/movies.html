@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<title>Filmy</title>
+	<style>
+		
+		.movie {
+			margin: 8px;
+			padding: 12px;
+			padding-left: 18px;
+			border: 1px solid gainsboro;
+			border-radius: 3px;
+			border-left: 16px solid blue;
+			display: inline-block;
+			max-width: 400px;
+			vertical-align: top;
+			/*benes fucking zandal jsem test na pana nevim proc to tady pisu jeste ani nevim vysledky, vidim ze to muze byt treba neco s tou zajimabvou veci a az se zjistim
+			co to bude de*/
+		}
+
+		.movie h3 {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+
+		.movie .price {
+			font-size: 1.3em;
+			font-weight: 700;
+			padding: 12px;
+			background-color: #db450a;
+			max-width: 90px;
+			text-align: center;
+			float: right;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="filters" class="w3-container w3-padding-16">
+		<div class="w3-row">
+			<div class="w3-col l3" style="width:50px"><i class="w3-xxlarge fa fa-search"></i></div>
+			<div class="w3-col l6"><input class="w3-input w3-border" name="search" type="text" placeholder="Search..."></div>
+			<div class="w3-col l3"><button class="w3-button w3-blue" onclick="search()">Search</button></div>
+		</div>
+	</div>
+	<hr>
+	<div id="movies" class="w3-container">
+		<div>
+			<h3 class="section-header w3-header w3-green w3-padding-16">Levnější filmy</h3>	
+			<div class="movies cheap">
+
+			</div>
+		</div>
+		<div>
+			<h3 class="section-header w3-header w3-red w3-padding-16">Dražší filmy</h3>
+			<div class="movies exp">
+
+			</div>
+		</div>
+	</div>
+
+	<script>
+		
+		var movies = $("#movies");
+
+		$(".section-header").click(function () {
+			$(this).next().slideToggle(400);
+		});
+
+		function search() {
+			let q = $("input[name=search]").val();
+			downloadMovies(q);
+		}
+
+		function downloadMovies(filter) {
+			$.get("getMovies.php?q="+filter, function (data) {
+
+				movies.find(".cheap").html("");
+				movies.find(".exp").html("");
+
+				let obj = JSON.parse(data);
+				console.log(obj);
+				let cheapLevel = 3;
+				let div;
+				for(let i = 0; i < obj.length; i++) {
+					div = obj[i].rental_rate < cheapLevel ? 
+						movies.find(".cheap") : 
+						movies.find(".exp");
+					createMovie(div, obj[i]);
+				}
+			});
+		}
+
+		function createMovie(div, movie) {
+			div.append(getMovieDiv(movie));
+		}
+
+		function getMovieDiv(movie) {
+			return `<div class="movie w3-container">
+								<h3>${movie.title} (${movie.release_year})</h3>
+								<span class="duration w3-badge">${getDuration(movie.length)}</span>
+								<p class="description">${movie.description}</p>
+								<div class="price w3-right w3-round">$${movie.rental_rate}</div>
+							</div>`;
+		}
+
+		function getDuration(min) {
+			let hours = Math.floor(min / 60);
+			min = min % 60;
+			if(hours == 0) 
+				return min + "min";
+			return hours + "h " + min + "min";
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+    <html lang="en">
+      <head>
+        <title>Title</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <style>
+  body{
+  font-family: verdana;
+  background-color: rgb(40, 198, 226);
+}
+/*navbar/links*/
+  ul{
+  list-style-type: none;
+  background-color: aliceblue;
+  overflow: hidden;
+  padding: 0px;
+}
+  li{
+  float: left;
+}
+  li a{
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+  a:link, a:visited {
+  background-color: rgb(199, 43, 43);
+  color: white;
+  padding: 12px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+a:hover, a:active {
+  background-color: gray;
+}
+/*input text/submit*/
+input[type=submit]{
+  border: none;
+  text-decoration: none;
+  padding: 16px 32px;
+  margin: 4px 2px;
+  cursor: pointer;
+  background-color: rgb(199, 43, 43);
+  border-radius: 4px;
+}
+input[type=submit]:hover{
+  background-color: gray;
+}
+input[type=text]{
+  border: none;
+  padding: 8px 30px;
+}
+input[type=text]:focus{
+  background-color: lightblue;
+}
+/*textarea*/
+textarea{
+  box-sizing: border-box;
+  border: 2px solid black;
+  border-radius: 4px;
+  background-color: blanchedalmond;
+  font-size: 16px;
+  padding: 12px 20px;
+}
+/*hledat textfield*/
+.searchText{
+  width: 130px;
+  box-sizing: border-box;
+  border: 2px solid rgb(129, 54, 54);
+  border-radius: 4px;
+  font-size: 16px;
+  float: right;
+  padding: 20px 35px;
+  margin-top: 5px;
+  margin-right: 1%;
+  transition: width 0.4s ease-in-out;
+}
+.searchText:focus{
+  width: 30%;
+}
+</style>
+      
+  </head>
+  <body>
+    <ul>
+      <li><a href="homepage.php?page=fitko">Fitko</a></li>
+      <li><a href="homepage.php?page=gladiator">Gladiator</a></li>
+      <li></li><a href="homepage.php?page=badminton">Badminton</a></li>
+      <input type="text" name="hledat" placeholder="Vyhledat..." class="searchText">
+    </ul>
+    <br><br>
+    <form method="POST">
+    Jméno:<input type="text" name="jmeno" id="useForm" placeholder="Vaše jméno:">
+    <br><br>
+    <div>Nová zpráva:</div><textarea rows="4" cols="50" name="komentar" form="useForm" placeholder="Dneska jsem...">
+    </textarea>
+    <br>
+    <input type="submit" name="odeslat">
+  </form>
+  </body>
+</html>

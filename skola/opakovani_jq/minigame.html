@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <title>Minihra</title>
+</head>
+<body>
+    <script>
+        let timerID = setTimeout(gameOver, 3000);
+        let score =0;
+        createObject();
+        function gameOver(){
+            $("<div>")[0].onclick = function () {};
+            $("<div>").css("background-color", "red");
+
+                let name = prompt("Zadej jmeno: ");
+                console.log("Melo by se odeslat skore " + name + ": " + score);
+
+                if(score > 0 && name != ""){
+                sendScore(name,score);
+                }
+        }
+
+        function objectClicked(){
+            score++;
+            console.log(score);
+            clearTimeout(timerID);
+            timerID = setTimeout(gameOver, 3000);
+            createObject();
+        }
+        function sendScore(name, score){
+            let data = {
+                "name" : name,
+                "score" : score
+            }
+            $.post("sendScore.php", "data", function(response){
+                
+                console.log(response);
+            });
+        }
+
+        function createObject(){
+            $("body").html("");
+            $("body").append(`
+            <div onclick="objectClicked()" style='width: ${getRand(50,150)}px; height: ${getRand(50,150)}px; background-color: ${getColor()};
+            position: absolute; left: ${getX()}px; top: ${getY()}px;'></div>
+            `);
+        }
+
+
+        function getRand(min, max){
+            
+            return Math.floor(min + Math.random() * (max - min)); 
+        }
+        function getX(){
+            return getRand(0,innerWidth - 50);
+        }
+        function getY(){
+            return getRand(0,innerHeight - 50);
+
+        }
+        function getColor(){
+            return `rgb(0, ${getRand(0,230)},  ${getRand(0,230)}, ${getRand(0,230)})`;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Registr pacientu s pohlavnimi chorobami</h1>
+    <form onsubmit="checkForm()">
+        <div>
+             <label>Jméno a Příjmení</label>
+             <input type="text" name="jmeno">
+        </div>
+        <div>
+            <label>Choroba</label>
+            <select>
+                <option value="1">AIDS</option>
+                <option value="2">Herpes</option>
+                <option value="3">Syfilis</option>
+                <option value="4">Kapavka</option>
+            </select>
+       </div>
+       <div>
+            <label>Popis příznaků</label>
+            <textarea name="popis"></textarea>
+        </div>
+        <div>
+            <label></label>
+            <input type="radio" name="pohlavi" value="nespecifikovano" checked>Nespecifikováno
+            <input type="radio" name="pohlavi" value="muz">Muž
+            <input type="radio" name="pohlavi" value="zena">Žena
+            <input type="radio" name="pohlavi" value="ostatni">Ostatní
+        </div>
+        <button onclick="checkForm()">Přidat</button>
+    </form>
+    <script>
+
+        var ulozeneChoroby = [];
+
+        function addError(err, inp){
+            console.log(inp);
+            console.log(inp.parentNode);
+            inp.parentNode.innerHTML += /*"<span class='error'>" ,*/ "<p>" + err + "</p>";
+        }
+
+        function checkForm(){
+            var odeslat = true;
+        
+            var jmeno = document.querySelector("input[name=jmeno]");
+            if(jmeno.value == "" || jmeno.value == null || jmeno.value == undefined){
+                odeslat = false;
+                addError("Prazdne pole jmeno!" , jmeno);
+            }
+            else{
+                if(jmeno.value.length < 3){  
+                odeslat = false;
+                addError("Mate moc kratke jmeno", jmeno);
+            }
+        }
+        var popis = document.querySelector("textarea[name=popis]");
+        console.log(popis.value);
+        if(popis.length < 30){
+            odeslat = false;
+            addError("Popis neni dostatecny!", popis)
+        }
+            
+            if(odeslat){
+
+                var jmen = jmeno.value;
+                var chor = document.querySelector("select").value;
+                var popi = popis.value;
+                var allPohlav = document.querySelectorAll("input[name=pohlavi]");
+                var pohlav = "";
+                for(var i =0; i< allPohlav.length; i++){
+                if(allPohlav[i].checked){
+                    pohlav = allPohlav[i].value;
+                }
+            }
+                
+                addChoroba(jmen, chor, popi, pohlav);
+
+
+                console.log("FORM BY SE ODESLAL");
+            }
+            return false;
+        }
+
+        function addChoroba(jmeno, choroba, popis, pohlavi){
+            var chorob = {
+                "jmeno" : jmeno,
+                "choroba" : choroba,
+                "popis" : popis,
+                "pohlavi" : pohlavi
+
+            };
+            ulozeneChoroby.push(chorob);
+            console.log(ulozeneChoroby);
+        }
+    </script>
+</body>
+</html>

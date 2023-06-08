@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+    </script>
+    <script src="https://api.itbook.store/1.0/"></script>
+    <title>Kruh</title>
+    <style>
+        *{
+            font-family: Verdana;
+            font-size: large;
+        }
+        .resetButton{
+            width: 100px;
+            background-color:rgb(185, 185, 185);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <label>Počet koleček:</label>
+        <input id="pocet" type="number">
+        <label>Vzdálenost koleček od středu:</label>
+        <input id="polomer" type="number">
+        <p></p>
+        <div>
+            <canvas id="platno" onclick="Kruh(document.getElementById('pocet').value, document.getElementById('polomer').value), Krizek()" width="1800" height="800" style="background-color: rgb(185, 185, 185)"></canvas>
+        </div>
+        <button class="resetButton" onclick="clearPlatno()">Vyčistit</button>   
+    </div>
+
+    <script>
+        var platno = document.getElementById("platno");
+        var platnoStuff = platno.getContext("2d");
+
+        function Kruh(pocet, polomer) {
+            var x = event.offsetX;
+            var y = event.offsetY;
+
+            for (var i = 0; i < pocet; i++) {
+                    uhel = (i - 3) * (Math.PI * 2) / pocet;
+                    platnoStuff.lineWidth = 20;
+                    platnoStuff.beginPath();
+
+                    var x1 = Math.cos(uhel) * (polomer * 3);
+                    var y1 = Math.sin(uhel) * (polomer * 3);
+
+                    platnoStuff.arc(x + x1, y + y1, 1, 0, 5 * Math.PI);
+
+                    platnoStuff.fill();
+                    platnoStuff.stroke();
+            }
+        }
+
+        function Krizek() {
+            var x = event.offsetX;
+            var y = event.offsetY;
+
+            platnoStuff.beginPath();
+            platnoStuff.lineWidth = 5;
+            
+            platnoStuff.moveTo(x - 10, y - 10);
+            platnoStuff.lineTo(x + 10, y + 10);
+            platnoStuff.moveTo(x + 10, y - 10);
+            platnoStuff.lineTo(x - 10, y + 10);
+
+            platnoStuff.stroke();
+        }
+
+        function clearPlatno() {
+            platnoStuff.clearRect(0, 0, platno.width, platno.height);
+        }
+        /*function platnoSize() {
+        var pltnSize;
+        pltnSize.canvas.width  = window.innerWidth;
+        pltnSize.canvas.height = window.innerHeight;
+        }*/
+
+    </script>
+
+</body>
+</html>

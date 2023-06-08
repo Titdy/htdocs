@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    od <input type="number" id="min" value="0">
+    do <input type="number" id="max" value="20">
+    pocet <input type="number" id="pocet" value="10">
+    <br><button type="button" onclick="stahniCislo()">Pridat</button>
+    <div id="cisla">
+
+    </div>
+    <script>
+        function stahniCislo(){
+            let min = $("#min").val();
+            let max = $("#max").val();
+
+            $.post("neco.php?min="+min+"&max="+max+"$pocet="+pocet, function (data){
+                let pole = JSON.parse(data);
+                for(let i = 0; i < pole.length; i++){
+                $("#cisla").append(`<li>${pole[i]}</li>`);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        tr.highlighted td{
+            background-color: red;
+        }
+
+        table{
+            border: 1px solid black;
+            border-collapse: collapse;
+
+        }
+        tr{
+            border: 1px solid black;
+            padding: 20px;
+            margin: 20px;
+            border-collapse: collapse;
+        }
+        td{
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<table id="data">
+    <tr id="tr1">
+        <td id="td1"></td>
+        <td id="td2"></td>
+        <td id="td3"></td>
+        <td id="td4"></td>
+        <td id="td5"></td>
+        <td id="td6"></td>
+        <td id="td7"></td>
+        <td id="td8"></td>
+        <td id="td9"></td>
+        <td id="td10"></td>
+    </tr>
+    <tr id="tr2">
+        <td id="td1"></td>
+        <td id="td2"></td>
+        <td id="td3"></td>
+        <td id="td4"></td>
+        <td id="td5"></td>
+        <td id="td6"></td>
+        <td id="td7"></td>
+        <td id="td8"></td>
+        <td id="td9"></td>
+        <td id="td10"></td>
+    </tr>
+    <tr id="tr3">
+        <td id="td1"></td>
+        <td id="td2"></td>
+        <td id="td3"></td>
+        <td id="td4"></td>
+        <td id="td5"></td>
+        <td id="td6"></td>
+        <td id="td7"></td>
+        <td id="td8"></td>
+        <td id="td9"></td>
+        <td id="td10"></td>
+    </tr>
+    <tr id="tr4">
+        <td id="td1"></td>
+        <td id="td2"></td>
+        <td id="td3"></td>
+        <td id="td4"></td>
+        <td id="td5"></td>
+        <td id="td6"></td>
+        <td id="td7"></td>
+        <td id="td8"></td>
+        <td id="td9"></td>
+        <td id="td10"></td>
+    </tr>
+    <tr id="tr5">
+        <td id="td1"></td>
+        <td id="td2"></td>
+        <td id="td3"></td>
+        <td id="td4"></td>
+        <td id="td5"></td>
+        <td id="td6"></td>
+        <td id="td7"></td>
+        <td id="td8"></td>
+        <td id="td9"></td>
+        <td id="td10"></td>
+    </tr>
+    <tr id="tr6">
+        <td id="td1"></td>
+        <td id="td2"></td>
+        <td id="td3"></td>
+        <td id="td4"></td>
+        <td id="td5"></td>
+        <td id="td6"></td>
+        <td id="td7"></td>
+        <td id="td8"></td>
+        <td id="td9"></td>
+        <td id="td10"></td>
+    </tr>
+    <tr id="tr7">
+        <td id="td1"></td>
+        <td id="td2"></td>
+        <td id="td3"></td>
+        <td id="td4"></td>
+        <td id="td5"></td>
+        <td id="td6"></td>
+        <td id="td7"></td>
+        <td id="td8"></td>
+        <td id="td9"></td>
+        <td id="td10"></td>
+    </tr>
+    <tr id="tr8">
+        <td id="td1"></td>
+        <td id="td2"></td>
+        <td id="td3"></td>
+        <td id="td4"></td>
+        <td id="td5"></td>
+        <td id="td6"></td>
+        <td id="td7"></td>
+        <td id="td8"></td>
+        <td id="td9"></td>
+        <td id="td10"></td>
+    </tr>
+    <tr id="tr9">
+        <td id="td1"></td>
+        <td id="td2"></td>
+        <td id="td3"></td>
+        <td id="td4"></td>
+        <td id="td5"></td>
+        <td id="td6"></td>
+        <td id="td7"></td>
+        <td id="td8"></td>
+        <td id="td9"></td>
+        <td id="td10"></td>
+    </tr>
+    <tr id="tr10">
+        <td id="td1"></td>
+        <td id="td2"></td>
+        <td id="td3"></td>
+        <td id="td4"></td>
+        <td id="td5"></td>
+        <td id="td6"></td>
+        <td id="td7"></td>
+        <td id="td8"></td>
+        <td id="td9"></td>
+        <td id="td10"></td>
+    </tr>
+
+</table>
+
+  <label for="radek">Řádek</label><br>
+  <input type="number" id="radek" name="radek"><br>
+  
+  <label for="sloupec">Sloupec</label><br>
+  <input type="number" id="sloupec" name="sloupec"><br>
+
+<button type="button" id="change" style="padding: 20px;">  OK  </button>
+
+
+<script>
+$(document).on('click', '#data td, #change', function(e) {
+  if ($(this).is('td')) {
+    $(this).closest('tr').toggleClass('highlighted');
+  } else {
+    $('#data tr').toggleClass('highlighted');
+  }
+});
+</script>
+
+
+</body>
+</html>

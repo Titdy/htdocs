@@ -1,0 +1,76 @@
+body{
+    font-family: verdana;
+    background-color: rgb(40, 198, 226);
+  }
+  /*navbar/links*/
+    ul{
+    list-style-type: none;
+    background-color: aliceblue;
+    overflow: hidden;
+    padding: 0px;
+  }
+    li{
+    float: left;
+  }
+    li a{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+  }
+    a:link, a:visited {
+    background-color: rgb(199, 43, 43);
+    color: white;
+    padding: 12px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  a:hover, a:active {
+    background-color: gray;
+    border: 2í
+  }
+  /*input text/submit*/
+  input[type=submit]{
+    border: none;
+    text-decoration: none;
+    padding: 16px 32px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: rgb(199, 43, 43);
+    border-radius: 4px;
+  }
+  input[type=submit]:hover{
+    background-color: gray;
+  }
+  input[type=text]{
+    border: none;
+    padding: 8px 30px;
+  }
+  input[type=text]:focus{
+    background-color: lightblue;
+  }
+  /*textarea*/
+  textarea{
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 4px;
+    background-color: rgb(255, 255, 255);
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+  /*hledat textfield*/
+  .searchText{
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid rgb(129, 54, 54);
+    border-radius: 4px;
+    font-size: 16px;
+    float: right;
+    padding: 20px 35px;
+    margin-top: 5px;
+    margin-right: 1%;
+    transition: width 0.4s ease-in-out;
+  }
+  .searchText:focus{
+    width: 30%;
+  }

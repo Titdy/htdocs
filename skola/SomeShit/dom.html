@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+        }
+        .circle{
+            background-color: green;
+            border-radius: 50%;
+        }
+        .square{
+            background-color: red;
+            border-radius: 4%;
+        }
+    </style>
+</head>
+<body>
+     <div class="circle"></div>
+     <div class="circle" id="druhy"></div>
+     <div class="square"></div>
+     <button onclick="do1()">Udelej prvni</button>
+     <button onclick="do2()">Udelej druhy</button>
+     <button onclick="do3()">Udelej treti</button>
+
+
+     <br>
+     <button onclick="neverim()" style="display: none;">neverim</button>
+     <script>
+         function do1(){
+            var druhy = document.getElementById("druhy");
+            druhy.innerHTML = "Ahoj :)";
+            console.log(druhy);
+         }
+         function do2(){
+            var kolecka = document.getElementsByClassName("circle");
+            for(var i =0; i< kolecka.length;i++){
+                kolecka[i].style.width = "50px";
+            }
+            console.log(kolecka);
+         }
+         function do3(){
+             var elms = document.querySelectorAll(".circle, .square");
+             for(var i =0; i< elms.length; i++){
+                 if(elms[i].classList.contains("circle")){
+                     elms[i].style.borderRadius="4%";
+                     elms[i].innerHTML="Ja jsem ctverecek";
+                 }else if(elms[i].classList.contains("square")){
+                    elms[i].style.borderRadius="50%";
+                    elms[i].innerHTML="Ja jsem kolecko";
+                 }
+             }        
+            } 
+                var btns = document.getElementsByTagName("button");
+               btns[btns.length-1].style.display="block";
+            function neverim(){
+                var elms = document.querySelectorAll(".circle, .square");
+             for(var i =0; i< elms.length; i++){
+                 if(elms[i].classList.contains("circle")){
+                     elms[i].style.borderRadius="50%";
+                     elms[i].innerHTML="Ja jsem lhar, mel si pravdu";
+                 }else if(elms[i].classList.contains("square")){
+                    elms[i].style.borderRadius="4%";
+                    elms[i].innerHTML="Ja jsem lhar, mel si pravdu";
+                 }
+                 elms[i].onclick = odhalSe;
+               }
+
+            }
+            function odhalSe(evt){
+                console.log(evt.target);
+                var elms = document.querySelectorAll(".circle, .square");
+             for(var i =0; i< elms.length; i++){
+                 if(evt.target.classList.contains("circle")){
+                     evt.target.style.borderRadius="50%";
+                     evt.target.innerHTML="Ja jsem lhar, mel si pravdu";
+                 }else if(elms[i].classList.contains("square")){
+                    evt.target.style.borderRadius="4%";
+                    evt.target.innerHTML="Ja jsem lhar, mel si pravdu";
+                 }
+            }
+        }
+     </script>
+</body>
+</html>

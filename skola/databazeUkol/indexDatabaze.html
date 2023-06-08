@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+*{
+  font-family: verdana;
+}
+
+    input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.login {
+    width: 70%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+body{
+  margin: 0;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+li {
+  float: left;
+  border-right:1px solid #bbb;
+}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+</style>
+
+</head>
+<body>
+  <ul>
+    <li><a class="active" href="#home">Home</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li style="float:right"><a href="#about">About</a></li>
+  </ul><br><br><br>
+
+
+    <form>
+        <label for="jmen">Jméno</label><input type="text" name="jmeno" id="jmen"><br>
+        <label for="prij">Příjmení</label><input type="text" name="prijmeni" id="prij"><br>
+        <input type="radio" name="pohlavi" id="muz"><label for="muz">Muž</label><br>
+        </label><input type="radio" name="pohlavi" id="zena"><label for="zena">Žena</label><br>
+        Věk: <input type="number" name="vek"><br>
+    </form>
+<br><br><br>
+
+<div class="login">
+    <form>
+      <label for="username">Uživatelské jméno</label><br>
+      <input type="text" id="username" name="userLogin" placeholder="Uživatelské jméno.."><br>
+  
+      <label for="userPassword">Heslo</label><br>
+      <input type="text" id="userPassword" name="passwordLogin" placeholder="Heslo.."><br>
+  
+      <input type="submit" value="Přihlásit se">
+    </form>
+  </div>
+
+  <div class="signUp">
+    <form>
+        <label for="usernameSignUp">Uživatelské jméno</label><br>
+        <input type="text" id="usernameSignUp" name="userSignUp" placeholder="Your name.."><br>
+    
+        <label for="userSignUpPassword">Heslo</label><br>
+        <input type="text" id="userSignUpPassword" name="userSignUpPass" placeholder="Your last name.."><br>
+    
+        <input type="submit" value="Vytvořit nový účet">
+      </form>
+  </div>
+
+
+  <div class="recenze">
+
+    <form method="POST">
+      <div class="nadpis"></div>
+        Jméno:<input type="text" name="jmeno" id="useForm" placeholder="Vaše jméno:">
+    <br><br>
+    <div>Nová zpráva:</div><textarea rows="4" cols="50" name="komentar" form="useForm" placeholder="Dneska jsem...">
+    </textarea>
+    <br>
+    <input type="submit" name="odeslatRecenze" value="odeslat">
+    </form>
+  </div>
+
+  <div class="nakup">
+    <form>
+      <input type="checkbox" name="nakupTabulka" id="pol1"><label for="pol1">Gáza 5x 10cm</label><br>
+      <input type="checkbox" name="nakupTabulka" id="pol1"><label for="pol1">Gáza 5x 7,5cm</label><br>
+      <input type="checkbox" name="nakupTabulka" id="pol1"><label for="pol1">Gáza 5x 5cm</label><br>
+      <input type="checkbox" name="nakupTabulka" id="pol2"><label for="pol2">Obinadlo sterilní 2krát 10cm x 5m</label><br>
+      <input type="checkbox" name="nakupTabulka" id="pol3"><label for="pol3">Dezinfekce líh 50ml</label><br>
+      <input type="checkbox" name="nakupTabulka" id="pol4"><label for="pol4">Sada pro sešívání ran</label><br>
+      <input type="checkbox" name="nakupTabulka" id="pol5"><label for="pol5">Škrtidlo</label><br>
+      <input type="checkbox" name="nakupTabulka" id="pol6"><label for="pol6">Náplasti 5krát 10x10cm</label><br>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en cz">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- JQuery -->
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/jquery.color-animation/1/mainfile"></script>
+
+    <style>
+        p {
+            margin: 1em;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    
+    <p>Ukrajinské námořnictvo v pondělí při bránění přístavního města Oděsa zasáhlo ruskou hlídkovou loď. Podle deníku The Times by se mělo jednat o plavidlo Vasilij Bykov, které mělo první den invaze za úkol dobýt Hadí (Zmijí) ostrov. Třináct ukrajinských vojáků tehdy loď vulgárně poslalo pryč, čímž vznikla hláška, která se stala symbolem proti ruské agresi.</p>
+
+    <script>
+
+    
+let hiddenWord = "";
+    
+    createRandom();
+    registerFunc();
+
+    function testSpravnosti(slovicko){
+        return hiddenWord == slovicko;
+    }
+
+    function testSpravnosti2(slovicko2){
+        return hiddenWord2 == slovicko2;
+    }
+
+    function testSpravnosti3(slovicko3){
+        return hiddenWord3 == slovicko3;
+    }
+    
+    function createRandom(){
+       let slova = $("p").html().split(" ");
+        let index = Math.floor(Math.random()*slova.length);
+        let index2 = Math.floor(Math.random()*slova.length);
+        let index3 = Math.floor(Math.random()*slova.length);
+        if(index2 == index || index3 == index2){
+            index2 = Math.floor(Math.random()*slova.length);
+        }
+        if(index3 == index || index2 == index3){
+            index3 = Math.floor(Math.random()*slova.length);
+        }
+        hiddenWord = slova[index];
+        hiddenWord2 = slova[index2];
+        hiddenWord3 = slova[index3];
+         let nahrada = get_(slova[index, index2, index3]);
+       console.log(index, index2, index3);
+        let clanek = "";
+       for(let i = 0; i < slova.length; i++) {
+            if(i==index || i==index2 || i==index3)
+            clanek += "<span> " + nahrada + " </span> ";
+            else
+            clanek += slova[i] + " ";           
+       }
+       $("p").html(clanek);
+    }
+
+    function get_(slovo){
+        let _ = "";
+        for(let i = 0; i < slovo.length; i++){
+            _ += "___";
+        return _;
+
+        }
+    }
+
+
+    
+    function registerFunc(){
+        $("span").on("click" ,function () {
+        let slovo = prompt("Zadejte Slovo: ");
+        if(slovo == undefined || slovo == null || slovo == ""){
+
+        } else {
+            $(this).off("click");
+            if(testSpravnosti(slovo) || testSpravnosti2(slovo) || testSpravnosti3(slovo)){
+                $(this).html(slovo).css("color", "green");
+
+            }else{
+                $(this).html(slovo).css("color", "red");
+            }
+        }
+    });
+    } 
+    </script>
+
+</body>
+</html>
