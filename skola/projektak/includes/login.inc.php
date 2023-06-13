@@ -1,9 +1,9 @@
 <?php
-ini_set('display_errors', 1);
+/*ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-/*header("location: ../profile.php");
+header("location: ../profile.php");
 if (isset($_POST["submit"])) {
     $username = $_POST["uid"];
     $pwd = $_POST["pwd"];
@@ -23,10 +23,72 @@ if (isset($_POST["submit"])) {
 else{
     header("location: ../login.php");
     exit();
-}
-*/
+}*/
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+require_once 'dbh.inc.php';
+require_once 'functions.inc.php';
 
 if (isset($_POST["submit"])) {
+    $username = $_POST["uid"];
+    $pwd = $_POST["pwd"];
+
+    if (emptyInputLogin($username, $pwd) !== false) {
+        header("Location: ../login.php?error=emptyinput");
+        exit();
+    }
+
+    $user = loginUser($conn, $username, $pwd);
+
+    if ($user && $user['email'] === 'admin@admin.cz') {
+        header("Location: ../admin.php");
+        exit();
+    } else {
+        header("Location: ../profile.php");
+        exit();
+    }
+} else {
+    header("Location: ../login.php");
+    exit();
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*if (isset($_POST["submit"])) {
     $username = $_POST["uid"];
     $pwd = $_POST["pwd"];
 
@@ -53,5 +115,5 @@ if (isset($_POST["submit"])) {
 } else {
     header("location: ../login.php");
     exit();
-}
+}*/
 

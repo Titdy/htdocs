@@ -21,6 +21,13 @@ session_start();
   integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
   crossorigin="anonymous"></script>
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  
+  <!-- Include the Slick Carousel JavaScript file -->
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
 <!--bootstrap import-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -60,8 +67,13 @@ session_start();
           <li class="nav-item">
             <a class="nav-link" href="tutorialVideaMenu.php">Naučná videa</a>
           </li>
-
-          <div class="dropdown show">
+          <li class="nav-item">
+            <a class="nav-link" href="faq.php">FAQ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="terms.php">Termíny</a>
+          </li>
+          <!--<div class="dropdown show">
             <a class="btn dropdown-toggle text-white-50" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Informační videa
             </a>
@@ -70,7 +82,7 @@ session_start();
               <a class="dropdown-item" href="kratkeZbrane.php">Krátké palné zbraně</a>
               <a class="dropdown-item" href="dlouheZbrane.php">Dlouhé palné zbraně</a>
               <a class="dropdown-item" href="chladneZbrane.php">Zbraně na blízko</a>
-            </div>
+            </div>-->
           </div>
           <?php 
           if (isset($_SESSION["useruid"])) {

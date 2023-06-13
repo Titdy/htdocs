@@ -1,7 +1,7 @@
 <?php 
 require_once 'header.php';
 ?>
-<div class="container"  style="padding-top: 10%; padding-bottom: 5%;">
+<div class="container border border-top-0 border-left-0 border-right-0 border-primary"  style="padding-top: 10%; padding-bottom: 5%;">
   <div class="col-12 col-sm-12 col-lg-12 col-md-12">
     <h2>Náš Personál</h2>
     <br>
@@ -26,7 +26,7 @@ require_once 'header.php';
     </div>
 </div> 
 </div>
-<div class="container"  style="padding-top: 10%; padding-bottom: 5%;">
+<div class="container border border-top-0 border-left-0 border-right-0 border-primary"  style="padding-top: 10%; padding-bottom: 5%;">
     <div class="col-12 col-sm-12 col-lg-12 col-md-12">
       <br>
       <div>
@@ -50,7 +50,7 @@ require_once 'header.php';
       </div>
   </div> 
   </div>
-  <div class="container"  style="padding-top: 10%; padding-bottom: 5%;">
+  <div class="container border border-top-0 border-left-0 border-right-0 border-primary"  style="padding-top: 10%; padding-bottom: 5%;">
     <div class="col-12 col-sm-12 col-lg-12 col-md-12">
       <br>
       <div>
@@ -72,7 +72,7 @@ require_once 'header.php';
       </div>
   </div> 
   </div>
-  <div class="container"  style="padding-top: 10%; padding-bottom: 5%;">
+  <div class="container border border-top-0 border-left-0 border-right-0 border-primary"  style="padding-top: 10%; padding-bottom: 5%;">
     <div class="col-12 col-sm-12 col-lg-12 col-md-12">
       <br>
       <div>
@@ -95,7 +95,7 @@ require_once 'header.php';
       </div>
   </div> 
   </div>
-  <div class="container"  style="padding-top: 10%; padding-bottom: 5%;">
+  <div class="container border border-top-0 border-left-0 border-right-0 border-primary"  style="padding-top: 10%; padding-bottom: 5%;">
     <div class="col-12 col-sm-12 col-lg-12 col-md-12">
       <br>
       <div>
@@ -118,7 +118,7 @@ require_once 'header.php';
       </div>
   </div> 
   </div>
-  <div class="container"  style="padding-top: 10%; padding-bottom: 5%;">
+  <div class="container border border-top-0 border-left-0 border-right-0 border-primary"  style="padding-top: 10%; padding-bottom: 5%;">
     <div class="col-12 col-sm-12 col-lg-12 col-md-12">
       <br>
       <div>

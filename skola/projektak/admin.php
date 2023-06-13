@@ -1,6 +1,9 @@
 <?php
-/*session_start();
 include_once 'header.php';
+require_once('includes/dbh.inc.php');
+require_once('includes/dbtext.inc.php');
+/*session_start();
+
 require_once('includes/dbh.inc.php');
 require_once('includes/dbtext.inc.php');
 // Validate the user's credentials and retrieve the user's role from the database
@@ -18,7 +21,7 @@ header("Location: admin.php"); // Change 'home.php' to the desired destination p
 // Check if the user is logged in and has the admin role
 /*if (isset($_SESSION['userRole']) && $_SESSION['userRole'] === 'admin') {
     // Allow access to the admin panel
-    // Your admin panel code goes here
+    // Your admin panel code goes here*/
 
     // Fetch all the enrolled users from the "course_reg" table
     $sql = "SELECT * FROM course_reg";
@@ -105,17 +108,15 @@ header("Location: admin.php"); // Change 'home.php' to the desired destination p
     // Free the result set
     mysqli_free_result($result);
     
-} else {
+/*} else {
     // Redirect or display an error message
     header("Location: unauthorized.php");
     exit();
-}
+}*/
     
 
+   
 
-    include_once 'footer.php';
-    ?>
-*/
 
 
 
@@ -123,7 +124,7 @@ header("Location: admin.php"); // Change 'home.php' to the desired destination p
 
 
 // Check if the user is logged in and has the admin role
-if (isset($_SESSION['userRole']) && $_SESSION['userRole'] === 'admin') {
+/*if (isset($_SESSION['userRole']) && $_SESSION['userRole'] === 'admin') {
     // Fetch all the enrolled users from the "course_reg" table
     $sql = "SELECT * FROM course_reg";
     $result = mysqli_query($conn, $sql);
@@ -131,52 +132,48 @@ if (isset($_SESSION['userRole']) && $_SESSION['userRole'] === 'admin') {
     // Check if any rows are returned
     if (mysqli_num_rows($result) > 0) {
         echo '<div class="container"  style="padding-top: 10%; padding-bottom: 5%;">';
-        echo '<p class="font-weight-bold">Zájemci o střelecký kurz</p>';
-        echo '<table class="table">';
-        echo '<thead class="thead-dark">';
-        echo '<tr>';
-        echo '<th scope="col">ID</th>';
-        echo '<th scope="col">Jméno</th>';
-        echo '<th scope="col">Email</th>';
-        echo '<th scope="col">telefon</th>';
-        echo '<th scope="col">Adresa</th>';
-        echo '<th scope="col">Město</th>';
-        echo '<th scope="col">Typ Kurzu </th>';
-        echo '</tr>';
+        //html table code here
         echo '</thead>';
-    
+
         // Loop through each row and display the data
         while ($row = mysqli_fetch_assoc($result)) {
             echo '<tr>';
-            echo '<td>' . $row['courseUserId'] . '</td>';
-            echo '<td>' . $row['courseUserName'] . '</td>';
-            echo '<td>' . $row['courseUserEmail'] . '</td>';
-            echo '<td>' . $row['courseUserPhone'] . '</td>';
-            echo '<td>' . $row['courseUserAddress'] . '</td>';
-            echo '<td>' . $row['courseUserCity'] . '</td>';
-            echo '<td>' . $row['courseUserCourse'] . '</td>';            
+            //html table code here           
             echo '</tr>';
         }
-    
-        echo '</table>';
-        echo '</div>';
     } else {
         echo '<div class="no-users-message">No users enrolled in the course.</div>';
     }
     // Free the result set
     mysqli_free_result($result);
-
-
-
-
-
 } else {
     // Redirect or display an error message
-    header("Location: unauthorized.php");
+    header("Location: admin.php");
     exit();
-}
+}*/
 
-include_once 'footer.php';
+
+
+//session_start();
+/*if (isset($_SESSION['userRole']) && $_SESSION['userRole'] === 'admin') {
+    echo '<a href="display_users.php">Display Enrolled Users</a>';
+    if (is_string($_SESSION['userRole'])) {
+        echo $_SESSION['userRole'];
+    } else {
+        echo 'Invalid user role.';
+    }
+} else {
+    echo 'You do not have permission to access this page.';
+    if (is_string($_SESSION['userRole'])) {
+        echo $_SESSION['userRole'];
+    } else {
+        echo 'Invalid user role.';
+    }
+}*/
+
+
+
+
 
 
 
@@ -262,6 +259,5 @@ if (isset($_SESSION['userRole']) && $_SESSION['userRole'] === 'admin') {
     header("Location: ../projektak/admin.php");
     exit();
 }*/
-
 include_once 'footer.php';
 ?>

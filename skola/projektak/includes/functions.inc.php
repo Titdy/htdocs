@@ -164,7 +164,7 @@ return $result;
 #checks if inputs are empty in Login form
 
 
-function loginUser($conn, $email, $pwd){
+/*function loginUser($conn, $email, $pwd){
     // Sanitize user input
     $sanitizedEmail = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
 
@@ -192,10 +192,85 @@ function loginUser($conn, $email, $pwd){
 
         return $userRole;
     }
+}*/
+
+
+// functions.inc.php
+/*unction authenticateUser($conn, $email, $pwd) {
+    // Prepare the SQL statement
+    $stmt = $conn->prepare("SELECT * FROM account_reg WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows === 1) {
+        $user = $result->fetch_assoc();
+
+        // Verify the password
+        if (password_verify($pwd, $user['userPwd'])) {
+            return $user; // Authentication successful
+        }
+    }
+
+    return false; // Authentication failed
+}*/
+
+
+//This one works
+/*function loginUser($conn, $email, $pwd){
+    $uidExists = uidExists($conn, $email, $email);
+
+    if ($uidExists === false) {
+        header("location: ../login.php?error=wrongLogin");
+        exit();
+    }
+
+    $pwdHashed = $uidExists["userPwd"];
+    $checkPwd = password_verify($pwd, $pwdHashed);
+
+    if ($checkPwd === false) {
+        header("location: ../login.php?error=wrongLogin");
+        exit();
+    }
+    else if ($checkPwd === true){
+        session_start();
+        $_SESSION["usersid"] = $uidExists["ID"];
+        $_SESSION["useruid"] = $uidExists["userNameRealName"]; 
+        header("location: ../index.php");
+        exit();
+    }
 }
+*/
+function loginUser($conn, $email, $pwd){
+    $uidExists = uidExists($conn, $email, $email);
 
+    if ($uidExists === false) {
+        header("Location: ../login.php?error=wrongLogin");
+        exit();
+    }
 
+    $pwdHashed = $uidExists["userPwd"];
+    $checkPwd = password_verify($pwd, $pwdHashed);
 
+    if ($checkPwd === false) {
+        header("Location: ../login.php?error=wrongLogin");
+        exit();
+    }
+    else if ($checkPwd === true){
+        session_start();
+        $_SESSION["usersid"] = $uidExists["ID"];
+        $_SESSION["useruid"] = $uidExists["userNameRealName"]; 
+
+        // Check if the user's email matches the admin email
+        if ($email === 'admin@admin.cz') {
+            header("Location: ../admin.php");
+            exit();
+        } else {
+            header("Location: ../profile.php");
+            exit();
+        }
+    }
+}
 
 
 
@@ -268,7 +343,7 @@ function loginUser($conn, $email, $pwd){
         header("location ../index.php");
         exit();
     }
-}
+}*/
 
 /*function loginUser($conn, $email, $pwd){
     // Sanitize user input
