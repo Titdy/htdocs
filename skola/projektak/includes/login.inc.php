@@ -1,119 +1,49 @@
 <?php
-/*ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// Start a new session
+session_start();
 
-header("location: ../profile.php");
-if (isset($_POST["submit"])) {
-    $username = $_POST["uid"];
-    $pwd = $_POST["pwd"];
-
-    require_once 'dbh.inc.php';
-    require_once 'functions.inc.php';
-
-    if (emptyInputLogin($username, $pwd) !== false) {
-    
-        header("location: ../login.php?error=emptyinput");
-        exit();//stops script
-    }
-
-    loginUser($conn, $username, $pwd);
-    
-}
-else{
-    header("location: ../login.php");
-    exit();
-}*/
-
+// Display PHP errors for debugging
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once 'dbh.inc.php';
-require_once 'functions.inc.php';
+// Include necessary files
+require_once 'dbh.inc.php'; // Database connection
+require_once 'functions.inc.php'; // Custom functions
 
+// Check if the login form was submitted
 if (isset($_POST["submit"])) {
     $username = $_POST["uid"];
     $pwd = $_POST["pwd"];
-
+    
+    // Check for empty input fields
     if (emptyInputLogin($username, $pwd) !== false) {
         header("Location: ../login.php?error=emptyinput");
-        exit();
+        exit(); // Stop script execution
     }
 
+    // Attempt to log in the user
     $user = loginUser($conn, $username, $pwd);
 
-    if ($user && $user['email'] === 'admin@admin.cz') {
-        header("Location: ../admin.php");
-        exit();
+    // Check if login was successful
+    if ($user) {
+        $_SESSION["useremail"] = $user['email']; // Store user email in session
+
+        // Redirect based on user type
+        if ($user['email'] === 'admin@admin.cz') {
+            header("Location: ../admin.php");
+            exit(); // Stop script execution
+        } else {
+            header("Location: ../profile.php");
+            exit(); // Stop script execution
+        }
     } else {
-        header("Location: ../profile.php");
-        exit();
+        header("Location: ../login.php?error=wronglogin");
+        exit(); // Stop script execution
     }
 } else {
+    // Redirect if the login form was not submitted
     header("Location: ../login.php");
-    exit();
+    exit(); // Stop script execution
 }
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*if (isset($_POST["submit"])) {
-    $username = $_POST["uid"];
-    $pwd = $_POST["pwd"];
-
-    require_once 'dbh.inc.php';
-    require_once 'functions.inc.php';
-
-    if (emptyInputLogin($username, $pwd) !== false) {
-        header("location: ../login.php?error=emptyinput");
-        exit(); // Stops script execution
-    }
-
-    $loginResult = loginUser($conn, $username, $pwd);
-    echo $loginResult;
-    if ($loginResult === "admin") {
-        header("location: ../admin.php"); // Redirect to admin page
-        exit();
-    } elseif ($loginResult === "user") {
-        header("location: ../profile.php"); // Redirect to user profile page
-        exit();
-    } else {
-        header("location: ../login.php?error=wronglogin"); // Redirect to login page with an error message
-        exit();
-    }
-} else {
-    header("location: ../login.php");
-    exit();
-}*/
-

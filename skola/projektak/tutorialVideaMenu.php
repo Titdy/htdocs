@@ -1,7 +1,8 @@
-<?php 
+<?php
 include_once 'header.php';
+require_once('includes/dbh.inc.php');
+require_once('includes/dbtext.inc.php');
 ?>
-
 
 <div class="container"  style="padding-top: 10%; padding-bottom: 5%;">
   <div class="col-12 col-sm-12 col-lg-12 col-md-12">
@@ -49,8 +50,18 @@ include_once 'header.php';
               <a class="dropdown-item" href="brokovniceIntro.php">Co je to Brokovnice</a>
               <a class="dropdown-item" href="brokovniceDruhy.php">Druhy Brokovnic</a>
               <a class="dropdown-item" href="brokovniceStrelivo.php">Střelivo a nabíjení Brokovnice</a>
-              <a class="dropdown-item" href="brokovniceRozborka.php">Rozborka Brokovnice</a>
+              <a class="dropdown-item" href="brokovniceRozborka.php">Rozborka Brokovnice Pumpvací</a>
+              <a class="dropdown-item" href="brokovniceDvou.php">Rozborka Brokovnice Dvouhlavňové</a>
             </div>
+          </div>
+          <div class="dropdown show">
+            <a class="btn dropdown-toggle text-white-50" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Nože
+            </a>
+          
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="nozeUvod.php">Úvod do nožů</a>
+              <a class="dropdown-item" href="nozeDruhy.php">Druhy Ocelí a Střenek</a>
           </div>
 
 
@@ -58,6 +69,7 @@ include_once 'header.php';
 
   </div>
 </div>
+
 
 <div class="container"  style="padding-top: 0%; padding-bottom: 0%;">
   <div class="col-12 col-sm-12 col-lg-12 col-md-12">
@@ -95,11 +107,13 @@ Vědomost a dodržování těchto pravidel může být rozdíl mezi životem a s
 <br>
 <div class="container">
   <div class="google-maps">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/cSWXLU519U0" 
-  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-  allowfullscreen></iframe>
-</div></div>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/aeJoBJHmPQg" 
+      title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+      clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
 
 <style> 
   /*mapa responsive*/

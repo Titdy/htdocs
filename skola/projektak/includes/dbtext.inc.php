@@ -6,7 +6,7 @@
 
 
 $query_results_bullets_rifle = array (
-    'hollow' => array('query' => 'SELECT * FROM video_text WHERE id=35', 'result' => null),
+    'hollow' => array('query' => 'SELECT * FROM video_text WHERE id=1', 'result' => null),
     'fmj' => array('query' => 'SELECT * FROM video_text WHERE id=2', 'result' => null),
     'partitions' => array('query' => 'SELECT * FROM video_text WHERE id=3', 'result' => null),
     'bonded' => array('query' => 'SELECT * FROM video_text WHERE id=4', 'result' => null),
@@ -106,3 +106,38 @@ $result_instalacePrislusenstvi = mysqli_query($conn, $query_instalacePrislusenst
 
 $records = "select * from video_text";
 $result_records = mysqli_query($conn, $records);
+
+$arRozborka = "select * from video_text where id=34";
+$result_arRozborka = mysqli_query($conn, $arRozborka);
+$kulRozborka = "select * from video_text where id=37";
+$result_kulRozborka = mysqli_query($conn, $kulRozborka);
+
+$shotgunRozborka = "select * from video_text where id=36";
+$result_shotgunRozborka = mysqli_query($conn, $shotgunRozborka);
+
+$pisDruhy = "select * from video_text where id=33";
+$result_pisDruhy = mysqli_query($conn, $pisDruhy);
+
+$pisRozborka = "select * from video_text where id=35";
+$result_pisRozborka = mysqli_query($conn, $pisRozborka);
+
+$dvouRozborka = "select * from video_text where id=38";
+$result_dvouRozborka = mysqli_query($conn, $dvouRozborka);
+
+$nozeUvod = "select * from video_text where id=39";
+$result_nozeUvod = mysqli_query($conn, $nozeUvod);
+
+$nozeTypy = "select * from video_text where id=40";
+$result_nozeTypy = mysqli_query($conn, $nozeTypy);
+
+$kulUvod = "select * from video_text where id=41";
+$result_kulUvod = mysqli_query($conn, $kulUvod);
+
+$brokUvod = "select * from video_text where id=30";
+$result_brokUvod = mysqli_query($conn, $brokUvod);
+
+
+// Text for FAQ's
+
+$faq = "select * from course_faq";
+$result_faq = mysqli_query($conn, $faq);

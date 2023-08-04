@@ -71,7 +71,7 @@ require_once('includes/dbtext.inc.php');
 </div>
 <div class="container"  style="padding-top: 10%; padding-bottom: 5%;">
 <?php
-         while($row = mysqli_fetch_assoc($result_pisRozborka)){
+         while($row = mysqli_fetch_assoc($result_nozeTypy)){
           ?>
         <p>
         <h2><?php echo $row['text_title'] ?></h2><br><br>
@@ -85,40 +85,6 @@ require_once('includes/dbtext.inc.php');
         </p>
         </div>
 
-
-
-
-
-
-
-
-
-<div class="container">
-  <div class="google-maps">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/msQ1Yu4ygog" 
-      title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-      clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-  </div>
-</div>
-
-
-<style> 
-  /*mapa responsive*/
-  .google-maps {
-        position: relative;
-        padding-bottom: 75%; 
-        height: 0;
-        overflow: hidden;
-      }
-      .google-maps iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100% !important;
-        height: 65% !important;
-      }
-</style>
 <?php
 include_once 'footer.php';
 ?>

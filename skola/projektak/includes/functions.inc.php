@@ -68,28 +68,7 @@ function uidExists($conn, $email, $username){
 }
 #checks if username already exists in database (account for web not for shooting course)
 
-/*function createUser($conn, $name, $email, $username, $pwd){
-    // Sanitize user input
-    $sanitizedEmail = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
-    $sanitizedUsername = htmlspecialchars($username, ENT_QUOTES, 'UTF-8');
-    $sanitizedName = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
-    
-    // Rest of your code
-    $sql = "INSERT INTO account_reg (email, userName, userPwd, userNameRealName) VALUES (?, ?, ?, ?);";
-    $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../signUp.php?error=stmtFailed");
-        exit();//stops script
-    }
-    
-    $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "ssss", $sanitizedEmail, $sanitizedUsername, $hashedPwd, $sanitizedName);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-    header("location: ../signup.php?error=none");
-}*/
-//
 function createUser($conn, $name, $email, $username, $pwd){
     // Sanitize user input
     $sanitizedEmail = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
@@ -112,20 +91,35 @@ function createUser($conn, $name, $email, $username, $pwd){
     header("location: ../signup.php?error=none");
 }
 
-
-function createCourseReview($conn, $userCourseReviewName, $userCourseReview){
-
-    $sql = "INSERT INTO course_reviews (username, review_text) VALUES (?, ?);";
+function termsInfo($conn, $termsTitle, $termsText){
+    $sql = "INSERT INTO course_terms (info_header, info_text) VALUES (?, ?);";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../signUp.php?error=stmtFailed");
         exit();//stops script
     }
-    mysqli_stmt_bind_param($stmt, "ss", $userCourseReviewName, $userCourseReview);
+    mysqli_stmt_bind_param($stmt, "ss", $termsTitle, $termsText);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location ../kurz.php?error=none");
 }
+
+function createCourseReview($conn, $userCourseReviewName, $userCourseReview){
+    $sanitizedName = htmlspecialchars($userCourseReviewName, ENT_QUOTES, 'UTF-8');
+    $sanitizedReview = htmlspecialchars($userCourseReview, ENT_QUOTES, 'UTF-8');
+
+    $sql = "INSERT INTO course_reviews (username, review_text) VALUES (?, ?);";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../signUp.php?error=stmtFailed");
+        exit(); // Stops script execution
+    }
+    mysqli_stmt_bind_param($stmt, "ss", $sanitizedName, $sanitizedReview);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../kurz.php?error=none");
+}
+
 // creates user whos interested in our course
 function createUserForCourse($conn, $userFullName, $userEmail, $userPhone, $userAddress, $userCity, $userCourseType){
     // Sanitize user input
@@ -163,15 +157,13 @@ return $result;
 }
 #checks if inputs are empty in Login form
 
-
-/*function loginUser($conn, $email, $pwd){
-    // Sanitize user input
+function loginUser($conn, $email, $pwd){
     $sanitizedEmail = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
 
     $uidExists = uidExists($conn, $sanitizedEmail, $sanitizedEmail);
 
     if ($uidExists === false) {
-        header("location: ../login.php?error=wrongLogin");
+        header("Location: ../login.php?error=wrongLogin");
         exit();
     }
 
@@ -179,7 +171,7 @@ return $result;
     $checkPwd = password_verify($pwd, $pwdHashed);
 
     if ($checkPwd === false) {
-        header("location: ../login.php?error=wrongLogin");
+        header("Location: ../login.php?error=wrongLogin");
         exit();
     }
     else if ($checkPwd === true){
@@ -187,82 +179,8 @@ return $result;
         $_SESSION["usersid"] = $uidExists["ID"];
         $_SESSION["useruid"] = $uidExists["userNameRealName"];
 
-        // Check the user's role from the database
-        $userRole = $uidExists["userRole"];
-
-        return $userRole;
-    }
-}*/
-
-
-// functions.inc.php
-/*unction authenticateUser($conn, $email, $pwd) {
-    // Prepare the SQL statement
-    $stmt = $conn->prepare("SELECT * FROM account_reg WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows === 1) {
-        $user = $result->fetch_assoc();
-
-        // Verify the password
-        if (password_verify($pwd, $user['userPwd'])) {
-            return $user; // Authentication successful
-        }
-    }
-
-    return false; // Authentication failed
-}*/
-
-
-//This one works
-/*function loginUser($conn, $email, $pwd){
-    $uidExists = uidExists($conn, $email, $email);
-
-    if ($uidExists === false) {
-        header("location: ../login.php?error=wrongLogin");
-        exit();
-    }
-
-    $pwdHashed = $uidExists["userPwd"];
-    $checkPwd = password_verify($pwd, $pwdHashed);
-
-    if ($checkPwd === false) {
-        header("location: ../login.php?error=wrongLogin");
-        exit();
-    }
-    else if ($checkPwd === true){
-        session_start();
-        $_SESSION["usersid"] = $uidExists["ID"];
-        $_SESSION["useruid"] = $uidExists["userNameRealName"]; 
-        header("location: ../index.php");
-        exit();
-    }
-}
-*/
-function loginUser($conn, $email, $pwd){
-    $uidExists = uidExists($conn, $email, $email);
-
-    if ($uidExists === false) {
-        header("Location: ../login.php?error=wrongLogin");
-        exit();
-    }
-
-    $pwdHashed = $uidExists["userPwd"];
-    $checkPwd = password_verify($pwd, $pwdHashed);
-
-    if ($checkPwd === false) {
-        header("Location: ../login.php?error=wrongLogin");
-        exit();
-    }
-    else if ($checkPwd === true){
-        session_start();
-        $_SESSION["usersid"] = $uidExists["ID"];
-        $_SESSION["useruid"] = $uidExists["userNameRealName"]; 
-
         // Check if the user's email matches the admin email
-        if ($email === 'admin@admin.cz') {
+        if ($sanitizedEmail === 'admin@admin.cz') {
             header("Location: ../admin.php");
             exit();
         } else {
@@ -272,120 +190,3 @@ function loginUser($conn, $email, $pwd){
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*function loginUser($conn, $email, $pwd){
-    $uidExists = uidExists($conn, $email, $email);
-
-    if ($uidExists === false) {
-        header("location: ../login.php?error=wrongLogin");
-        exit();
-    }
-
-    $pwdHashed = $uidExists["userPwd"];
-    $checkPwd = password_verify($pwd, $pwdHashed);
-
-    if ($checkPwd === false) {
-        header("location: ../login.php?error=wrongLogin");
-        exit();
-    }
-    else if ($checkPwd === true){
-        session_start();
-        $_SESSION["usersid"] = $uidExists["ID"];
-        $_SESSION["useruid"] = $uidExists["userNameRealName"]; 
-        header("location ../index.php");
-        exit();
-    }
-}*/
-
-/*function loginUser($conn, $email, $pwd){
-    // Sanitize user input
-    $sanitizedEmail = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
-
-    $uidExists = uidExists($conn, $sanitizedEmail, $sanitizedEmail);
-
-    if ($uidExists === false) {
-        header("location: ../login.php?error=wrongLogin");
-        exit();
-    }
-
-    $pwdHashed = $uidExists["userPwd"];
-    $checkPwd = password_verify($pwd, $pwdHashed);
-
-    if ($checkPwd === false) {
-        header("location: ../login.php?error=wrongLogin");
-        exit();
-    }
-    else if ($checkPwd === true){
-        session_start();
-        $_SESSION["usersid"] = $uidExists["ID"];
-        $_SESSION["useruid"] = $uidExists["userNameRealName"];
-
-        // Check if the user is an admin
-        if ($uidExists["userRole"] === "admin") {
-            header("location: ../admin.php"); // Redirect to admin.php
-            exit(); // Add this exit statement
-        } else {
-            header("location: ../profile.php"); // Redirect to profile.php
-            exit(); // Add this exit statement
-        }
-    }
-}*/
-
-
-
-
-#Logs in user
-#double $username in $uidExists() because it's working with uidExists() method where it's 
-#checking with mySql code ID or email so it either takes email or username, not both at the same time
-
-# The mysqli_stmt_bind_param() function is used to bind variables to the parameter markers of a prepared statement.
-# The mysqli_stmt_execute() function accepts a prepared statement object (created using the prepare() function) as a parameter, and executes it.
-# mysqli_stmt_close returns a boolean value which is true on success and false on failure

@@ -30,12 +30,11 @@ require_once 'header.php';
     <div class="col-12 col-sm-12 col-lg-12 col-md-12">
       <br>
       <div>
-          <img src="img/personell/PoliceGuy1.png" style="width: 20%; padding-left: 10px;" class="float-right d-none d-sm-block">
-          <h5>Martin Zloumavý</h5>
+          <img src="img/personell/viktor.jpg" style="width: 20%; padding-left: 10px;" class="float-right d-none d-sm-block">
+          <h5>Wiktor Wendolský</h5>
           <br>
-          <p>Pan Jiří je náš nejzkušenější Instruktor. Pan Jiří sloužil u 69. pluku přes 10 let a zažil
-              si boje převážně z velké části na blízkém východě, a proto se svýmy zkušenostmi patří mezi 
-              naše nejlepší střelce.
+          <p>Pan Wendolsky je jeden z nejzkušenějších Instruktorů. Pan Wnedolksý bojoval v druhé Čečenské válce. Avšak se netuší na jaké straně byl, i přes to 
+            ale považujeme pana Wendolského za důležitou součást našeho týmu a za kvalifikovaného a kvalitního instruktora střelby, jakého by jste si mohli přát. 
               <br><br>
               Z armády odešel kvůli ztesku po rodině ale nechtěl se vzdát armády, proto se k nám přidal
               a zařizuje trénink většinou pokročilých střelců.
@@ -45,7 +44,7 @@ require_once 'header.php';
               <li>Výška: 179 cm</li>
               <li>Věk: 29</li>
               <li>Let zkušeností: 6</li>
-              <li>Přezdívka: Polda</li>
+              <li>Přezdívka: Zaytsev chechenskiy</li>
           </ul>
       </div>
   </div> 

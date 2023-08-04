@@ -69,9 +69,13 @@ require_once('includes/dbtext.inc.php');
 
   </div>
 </div>
-<div class="container"  style="padding-top: 10%; padding-bottom: 5%;">
+
+
+
+
+<div class="container"  style="padding-top: 5%; padding-bottom: 5%;">
 <?php
-         while($row = mysqli_fetch_assoc($result_pisRozborka)){
+         while($row = mysqli_fetch_assoc($result_dvouRozborka)){
           ?>
         <p>
         <h2><?php echo $row['text_title'] ?></h2><br><br>
@@ -85,17 +89,11 @@ require_once('includes/dbtext.inc.php');
         </p>
         </div>
 
-
-
-
-
-
-
-
+        
 
 <div class="container">
   <div class="google-maps">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/msQ1Yu4ygog" 
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/aeJoBJHmPQg" 
       title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
       clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
     </iframe>

@@ -51,67 +51,58 @@ session_start();
   <h2><img src="img/pageImages/logoYes.png" style="height: 15%; width: 15%;"></h2>
 </header>
 
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-      <a class="navbar-brand" href="index.php"><i class="fa fa-home"></i></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="index.php"><i class="fa fa-home"></i></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="kurz.php">Kurz</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="instructors.php">Instruktoři</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="tutorialVideaMenu.php">Naučná videa</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="faq.php">FAQ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="terms.php">Termíny</a>
-          </li>
-          <!--<div class="dropdown show">
-            <a class="btn dropdown-toggle text-white-50" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Informační videa
-            </a>
-          
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="kratkeZbrane.php">Krátké palné zbraně</a>
-              <a class="dropdown-item" href="dlouheZbrane.php">Dlouhé palné zbraně</a>
-              <a class="dropdown-item" href="chladneZbrane.php">Zbraně na blízko</a>
-            </div>-->
-          </div>
-          <?php 
-          if (isset($_SESSION["useruid"])) {
-            echo "
-            
-            <li class='nav-item'> 
-            <a class='nav-link' href='profile.php'>Profil</a>
-            </li>";
-            echo "<li class='nav-item'> 
-            <a class='nav-link' href='includes/logout.inc.php'>Odhlásit se</a>
-            </li> ";
-          }else{
-            echo "
-            
-            <li class='nav-item'> 
-            <a class='nav-link' href='signUp.php'>Registrace</a>
-            </li>";
-            echo "<li class='nav-item'> 
-            <a class='nav-link' href='login.php'>Přihlásit se</a>
-            </li>";
-          }
-        
-          ?>
+            <li class="nav-item">
+                <a class="nav-link" href="kurz.php">Kurz</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="instructors.php">Instruktoři</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="tutorialVideaMenu.php">Naučná videa</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="faq.php">FAQ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="terms.php">Termíny</a>
+            </li>
+        </ul>
+        <?php
+        if (isset($_SESSION["useruid"])) {
+            echo "<ul class='navbar-nav ml-auto'>";
+            echo "<li class='nav-item'>";
 
-         </ul> 
-        </div>
-        
-    </nav>
+            // Check if the logged-in user is the admin
+            /*if ($_SESSION["useremail"] == "admin@admin.cz") {
+                echo "<a class='nav-link' href='admin.php'>Admin</a>";
+            } else {*/
+                echo "<a class='nav-link' href='profile.php'>Profil</a>";
+            //}
 
-    <script>
+            echo "</li>";
+            echo "<li class='nav-item'>";
+            echo "<a class='nav-link' href='includes/logout.inc.php'>Odhlásit se</a>";
+            echo "</li>";
+            echo "</ul>";
+        } else {
+            echo "<ul class='navbar-nav ml-auto'>";
+            echo "<li class='nav-item'>";
+            echo "<a class='nav-link' href='signUp.php'>Registrace</a>";
+            echo "</li>";
+            echo "<li class='nav-item'>";
+            echo "<a class='nav-link' href='login.php'>Přihlásit se</a>";
+            echo "</li>";
+            echo "</ul>";
+        }
+        ?>
 
-    </script>
+    </div>
+
+</nav>
